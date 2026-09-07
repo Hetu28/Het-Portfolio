@@ -1,3 +1,4 @@
+﻿import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -226,8 +227,8 @@ export default function ProjectsContent() {
         <div className="absolute inset-0 flex flex-col justify-center items-center overflow-hidden opacity-25 select-none pointer-events-none">
           <div className="marquee-fast-left">
             <div className="text-4xl sm:text-6xl md:text-7xl font-black uppercase text-white tracking-tight whitespace-nowrap px-4">
-              {aboutData.ctaMarquee.line1.join(" • ")} •{" "}
-              {aboutData.ctaMarquee.line1.join(" • ")} •
+              {aboutData.ctaMarquee.line1.join(" â€¢ ")} â€¢{" "}
+              {aboutData.ctaMarquee.line1.join(" â€¢ ")} â€¢
             </div>
           </div>
           <div className="marquee-fast-right mt-3">
@@ -235,8 +236,8 @@ export default function ProjectsContent() {
               className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight whitespace-nowrap px-4"
               style={{ color: "var(--accent)" }}
             >
-              {aboutData.ctaMarquee.line2.join(" • ")} •{" "}
-              {aboutData.ctaMarquee.line2.join(" • ")} •
+              {aboutData.ctaMarquee.line2.join(" â€¢ ")} â€¢{" "}
+              {aboutData.ctaMarquee.line2.join(" â€¢ ")} â€¢
             </div>
           </div>
         </div>
@@ -308,9 +309,9 @@ export default function ProjectsContent() {
                           <span className="text-[10px] tracking-[0.3em] uppercase font-mono font-bold" style={{ color: "var(--accent)" }}>
                             {activeProjectModal.category}
                           </span>
-                          <span className="text-white/30">•</span>
+                          <span className="text-white/30">â€¢</span>
                           <span className="text-xs text-white/60 font-mono">
-                            {activeProjectModal.year} — {activeProjectModal.duration}
+                            {activeProjectModal.year} â€” {activeProjectModal.duration}
                           </span>
                         </div>
                         <h2 className="text-2xl sm:text-4xl font-black text-white">
@@ -350,3 +351,4 @@ export default function ProjectsContent() {
     </div>
   );
 }
+

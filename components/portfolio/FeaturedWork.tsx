@@ -1,3 +1,4 @@
+﻿import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -42,9 +43,9 @@ export default function FeaturedWork() {
   }, [selectedProject]);
 
   const formatMeta = (p: Project) => {
-    if (p.id === "pole-47") return `Cinematographer (DOP) • ${p.year}`;
-    if (p.id === "void" || p.id === "dream-come-true") return `Cinematographer (DOP) • ${p.year}`;
-    return `${p.category} • ${p.role} • ${p.year}`;
+    if (p.id === "pole-47") return `Cinematographer (DOP) â€¢ ${p.year}`;
+    if (p.id === "void" || p.id === "dream-come-true") return `Cinematographer (DOP) â€¢ ${p.year}`;
+    return `${p.category} â€¢ ${p.role} â€¢ ${p.year}`;
   };
 
   return (
@@ -241,3 +242,4 @@ export default function FeaturedWork() {
     </>
   );
 }
+
