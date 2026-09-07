@@ -7,11 +7,6 @@ import {
   ArrowUpRight,
   Play,
   X,
-  SlidersHorizontal,
-  ChevronDown,
-  Clock,
-  Sparkles,
-  Award,
 } from "lucide-react";
 import { allProjectsList, projectCategories, ProjectPageItem } from "@/data/projects-page";
 import { aboutData } from "@/data/about";
@@ -115,12 +110,12 @@ export default function ProjectsContent() {
       </div>
 
       {/* =========================================================================
-          2. HIGH DENSITY CINEMATIC GRID (16:9 RATIO ARCHITECTURE)
+          2. 2-COLUMN HIGH-IMPACT CINEMATIC GRID
           ========================================================================= */}
       <div className="max-w-[1400px] mx-auto px-5 md:px-8">
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
         >
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
@@ -132,7 +127,7 @@ export default function ProjectsContent() {
                 transition={{ duration: 0.45, delay: index * 0.04 }}
                 key={project.id}
                 onClick={() => setActiveProjectModal(project)}
-                className="group relative cursor-pointer flex flex-col rounded-[24px] sm:rounded-[28px] overflow-hidden bg-[#0a0a0c]/80 border border-white/[0.08] hover:border-white/[0.2] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+                className="group relative cursor-pointer flex flex-col rounded-[28px] sm:rounded-[32px] overflow-hidden bg-[#0a0a0c]/90 border border-white/[0.08] hover:border-white/[0.2] transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.85)]"
               >
                 {/* 16:9 Thumbnail Image Container */}
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-black">
@@ -142,40 +137,35 @@ export default function ProjectsContent() {
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-black/40" />
 
-                  {/* Play Button Icon Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div
-                      className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-2xl transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        background: "var(--accent)",
-                        boxShadow: "0 0 30px var(--glow)",
-                      }}
-                    >
-                      <Play size={20} fill="currentColor" className="ml-1" />
-                    </div>
-                  </div>
-
-                  {/* Top Floating Badge */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                    <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest uppercase text-white/90">
+                  {/* Top Badges */}
+                  <div className="absolute top-5 left-5 right-5 flex items-center justify-between pointer-events-none">
+                    <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[10px] font-mono tracking-widest uppercase text-white/90">
                       {project.category}
                     </span>
-                    <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest text-white/80">
-                      {project.duration}
+                    <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[10px] font-mono tracking-widest text-white/80">
+                      {project.year}
                     </span>
+                  </div>
+
+                  {/* Bottom Right 'Watch Film' Pill */}
+                  <div className="absolute bottom-5 right-5 z-20">
+                    <div className="px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-xs font-semibold text-white flex items-center gap-2 group-hover:bg-[var(--accent)] group-hover:border-transparent transition-all duration-300 shadow-xl">
+                      <span className="w-2 h-2 rounded-full bg-red-500 group-hover:bg-white animate-pulse" />
+                      <span>Watch Film</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Card Information */}
-                <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between bg-gradient-to-b from-transparent to-[#070708]/90">
+                <div className="p-6 sm:p-8 flex flex-col flex-grow justify-between bg-gradient-to-b from-transparent to-[#070708]/95">
                   <div>
-                    <div className="flex items-baseline justify-between gap-2 mb-2">
-                      <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-[var(--accent)] transition-colors">
+                    <div className="flex items-baseline justify-between gap-4 mb-2">
+                      <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-white transition-colors">
                         {project.title}
                       </h3>
-                      <span className="font-serif-editorial italic text-sm text-[var(--accent)]">
+                      <span className="font-serif-editorial italic text-sm sm:text-base text-[var(--accent)] shrink-0">
                         {project.role}
                       </span>
                     </div>
@@ -186,11 +176,11 @@ export default function ProjectsContent() {
                   </div>
 
                   {/* Deliverables / Tags */}
-                  <div className="pt-4 border-t border-white/[0.06] flex flex-wrap items-center gap-2">
+                  <div className="pt-5 border-t border-white/[0.08] flex flex-wrap items-center gap-2">
                     {project.deliverables.map((tag, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-[11px] font-mono text-white/50 uppercase font-semibold"
+                        className="px-3.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-white/50 uppercase font-semibold"
                       >
                         {tag}
                       </span>
