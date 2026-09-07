@@ -38,7 +38,7 @@ export const allProjectsList: ProjectPageItem[] = [
     duration: "20 min",
     image:
       "/images/a-flowers-tale.jpg",
-    videoUrl: "/films/A Flower\'s Tale.mp4",
+    videoUrl: "https://youtu.be/ie-sxhsJYOM",
     synopsis:
       "Amongst the hustle of life, a neglected flower withers away, mirroring the fading love and connection in a relationship; as its petals droop, a realization dawns, prompting a desperate attempt to nurture and revive what was once cherished, before it's too late.",
     client: "Indie Film Festival Selection",
@@ -46,7 +46,7 @@ export const allProjectsList: ProjectPageItem[] = [
   },
   {
     id: "sting-ace-the-night",
-    title: "Sting — Ace the Night",
+    title: "Sting - Ace the Night",
     category: "Commercial TVC",
     categories: ["commercial", "color"],
     role: "Director & DOP",
@@ -54,7 +54,7 @@ export const allProjectsList: ProjectPageItem[] = [
     duration: "60 sec",
     image:
       "/images/sting-ace-the-night.jpg",
-    videoUrl: "/films/Sting- Ace the night.mp4",
+    videoUrl: "https://youtu.be/Rf2DR8_XDiI",
     synopsis:
       "High-octane commercial campaign capturing raw street energy, kinetic editing, and neon-lit Mumbai nightscapes.",
     client: "Sting Energy Drink",
@@ -70,7 +70,7 @@ export const allProjectsList: ProjectPageItem[] = [
     duration: "7 min",
     image:
       "/images/nothings-changed.jpg",
-    videoUrl: "/films/Nothing\'s Changed.mp4",
+    videoUrl: "https://youtu.be/5MlAn8FAHDk",
     synopsis:
       "After a bitter breakup, Abhi's quest for revenge leads him down a dangerous path of mistaken identity and vengeful threats.",
     client: "FTII Student Showcase",
@@ -86,7 +86,7 @@ export const allProjectsList: ProjectPageItem[] = [
     duration: "42 min",
     image:
       "/images/a-golden-boy.jpg",
-    videoUrl: "/films/A golden Boy.mp4",
+    videoUrl: "https://youtu.be/xyckt6YUxBk",
     synopsis:
       "As a golden statue on Juhu Beach, a helpless yet hopeful man uses his unique art to connect with the world, sharing moments of joy amidst his struggles. His ambition to break free from his circumstances inspires not only his life but also the lives of those he touches.",
     client: "National Geographic Youth Grant",
@@ -102,7 +102,7 @@ export const allProjectsList: ProjectPageItem[] = [
     duration: "5 min",
     image:
       "/images/void.jpg",
-    videoUrl: "/films/void.mp4",
+    videoUrl: "https://cdn.pixabay.com/video/2020/05/25/40130-424076663_large.mp4",
     synopsis:
       "An atmospheric narrative study in isolation and introspection, exploring quiet shadows and psychological depth.",
     client: "Indie Short Film",
@@ -189,4 +189,3 @@ export const allProjectsList: ProjectPageItem[] = [
     deliverables: ["Director", "Writer", "Offline Editor", "Color Grading"],
   },
 ];
-
