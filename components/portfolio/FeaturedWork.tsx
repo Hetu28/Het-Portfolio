@@ -1,5 +1,5 @@
-﻿import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
-"use client";
+﻿"use client";
+import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
@@ -242,4 +242,5 @@ export default function FeaturedWork() {
     </>
   );
 }
+
 
