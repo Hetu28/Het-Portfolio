@@ -57,7 +57,7 @@ export interface SiteSettings {
 export const siteSettings: SiteSettings = {
   name: "Het Patel",
   role: "FILMMAKER",
-  tagline: "Director · Cinematographer · Editor · Storyteller",
+  tagline: "Director • Cinematographer • Editor • Storyteller",
   location: "Mumbai, India",
   email: "hetucreatives@gmail.com",
   phone: "+91 8104948207",
@@ -89,11 +89,11 @@ export const siteSettings: SiteSettings = {
     posterUrl: "https://images.unsplash.com/photo-1627133805103-ce2d34ccdd37?crop=entropy&cs=srgb&fm=jpg&q=85&w=2000",
   },
   about: {
-    eyebrow: "ABOUT — PORTRAIT OF A FILMMAKER",
+    eyebrow: "ABOUT • PORTRAIT OF A FILMMAKER",
     headingPrefix: "I chase the",
     headingItalic: "quiet frames",
     headingSuffix: "that feel loud in memory.",
-    bio1: "I’m Het — an independent filmmaker working across direction, cinematography, editing, and graphic design. With hands-on experience spanning narrative films, commercials, and music videos — including roles as Assistant Director and Production Manager — I bring end-to-end craft to every set.",
+    bio1: "I'm Het — an independent filmmaker working across direction, cinematography, editing, and graphic design. With hands-on experience spanning narrative films, commercials, and music videos — including roles as Assistant Director and Production Manager — I bring end-to-end craft to every set.",
     bio2: "From shaping light, blocking, and camera rhythm to sculpting time in post-production, I keep an obsessive eye for the subtle, minor details no one would ever consciously notice, but that make the entire frame unforgettable.",
     image: "https://images.unsplash.com/photo-1534951258346-c31a2e0ff914?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
     stats: [
@@ -104,8 +104,8 @@ export const siteSettings: SiteSettings = {
     ],
   },
   contact: {
-    eyebrow: "CONTACT — SAY HELLO",
-    heading: "Let’s make something\nunforgettable.",
+    eyebrow: "CONTACT • SAY HELLO",
+    heading: "Let's make something\nunforgettable.",
     subheading: "Available for select directing, cinematography and editing commissions worldwide.",
     email: "hetucreatives@gmail.com",
     phone: "+91 8104948207",
@@ -119,8 +119,8 @@ export const siteSettings: SiteSettings = {
   },
   footer: {
     name: "HET PATEL",
-    tagline: "Filmmaker · Director · DOP · Editor",
-    copyright: "© 2026 Het Patel — All rights reserved",
+    tagline: "Filmmaker • Director • DOP • Editor",
+    copyright: "© 2026 Het Patel • All rights reserved",
     credit: "Designed & Developed for Het Patel.",
   },
 };

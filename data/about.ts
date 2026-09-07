@@ -120,7 +120,7 @@ export const aboutData: AboutData = {
       "Every shadow, camera movement, and sound cue serves the emotional core of the narrative. I keep an obsessive eye for the subtle, minor details no one would ever consciously notice, but that make the entire frame unforgettable.",
   },
   founderSubtitle: {
-    prefix: "Director · DOP · Editor",
+    prefix: "Director • DOP • Editor",
     name: "Het",
     title: "Patel",
     location: "Mumbai, India",
@@ -247,7 +247,7 @@ export const aboutData: AboutData = {
       {
         id: "crafting-gifts",
         name: "Crafting Gifts",
-        role: "Script Writer · Director · Cinematographer · Editor",
+        role: "Script Writer • Director • Cinematographer • Editor",
         year: "2024",
         category: "Commercial Brand Reels",
         logo: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=200&q=80",
@@ -255,7 +255,7 @@ export const aboutData: AboutData = {
       {
         id: "label-fiora",
         name: "Label Fiora",
-        role: "Director · Cinematographer · Editor",
+        role: "Director • Cinematographer • Editor",
         year: "2024",
         category: "Fashion Brand Campaign",
         logo: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=200&q=80",
@@ -263,7 +263,7 @@ export const aboutData: AboutData = {
       {
         id: "sculpther",
         name: "SculptHer",
-        role: "Director · Cinematographer · Editor",
+        role: "Director • Cinematographer • Editor",
         year: "2024",
         category: "Commercial Brand Film",
         logo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
@@ -272,7 +272,7 @@ export const aboutData: AboutData = {
         id: "three-mothers",
         name: "Three Mothers",
         extra: "Bolti Khidkiyaan : Short Film Festival",
-        role: "Short Film · Assistant Director",
+        role: "Short Film • Assistant Director",
         year: "2025",
         category: "Narrative Short",
         logo: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=200&q=80",
@@ -281,7 +281,7 @@ export const aboutData: AboutData = {
         id: "baap-re-baap",
         name: "Baap Re Baap",
         extra: "NSFF Mumbai - 2026",
-        role: "Short Film · Assistant Director",
+        role: "Short Film • Assistant Director",
         year: "2025",
         category: "Narrative Short",
         logo: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=200&q=80",
@@ -289,7 +289,7 @@ export const aboutData: AboutData = {
       {
         id: "ujaad",
         name: "Ujaad",
-        role: "Short Film · Assistant Director & Creative Producer",
+        role: "Short Film • Assistant Director & Creative Producer",
         year: "2025",
         category: "Narrative Short",
         logo: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=200&q=80",
@@ -297,7 +297,7 @@ export const aboutData: AboutData = {
       {
         id: "void-prod",
         name: "Void",
-        role: "Short Film · Cinematographer (DOP)",
+        role: "Short Film • Cinematographer (DOP)",
         year: "2026",
         category: "Narrative Short",
         logo: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=200&q=80",
@@ -305,7 +305,7 @@ export const aboutData: AboutData = {
       {
         id: "pole-47",
         name: "Pole 47",
-        role: "25 Min Short Film · Cinematographer (DOP)",
+        role: "25 Min Short Film • Cinematographer (DOP)",
         year: "2026",
         category: "Narrative Short",
         logo: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=200&q=80",
