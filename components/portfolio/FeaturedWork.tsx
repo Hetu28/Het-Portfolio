@@ -1,11 +1,11 @@
 ﻿"use client";
-import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ArrowUpRight, X } from "lucide-react";
 import { featuredProjects, Project } from "@/data/projects";
 import { motion, AnimatePresence } from "framer-motion";
+import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 
 export default function FeaturedWork() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -43,48 +43,47 @@ export default function FeaturedWork() {
   }, [selectedProject]);
 
   const formatMeta = (p: Project) => {
-    if (p.id === "pole-47") return `Cinematographer (DOP) â€¢ ${p.year}`;
-    if (p.id === "void" || p.id === "dream-come-true") return `Cinematographer (DOP) â€¢ ${p.year}`;
-    return `${p.category} â€¢ ${p.role} â€¢ ${p.year}`;
+    return `${p.category} • ${p.role}`;
   };
 
   return (
     <>
-      <section id="portfolio" className="relative z-10 section-y">
+      <section id="work" className="relative z-10 py-24 md:py-36">
         <div className="max-w-[1400px] mx-auto px-5 md:px-8">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14 md:mb-20">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-6 h-px bg-white/25" />
-                <span className="text-[10px] tracking-[0.32em] text-white/50 font-medium uppercase">
-                  HIGHLIGHTED WORK
-                </span>
-                <span className="w-6 h-px bg-white/25" />
-              </div>
-              <h2 className="text-[44px] sm:text-[60px] md:text-[84px] leading-[0.95] tracking-[-0.03em] font-black">
-                Highlighted <span className="font-serif-editorial" style={{ color: "var(--accent)" }}>work</span>
-                <br />
-                at a glance.
-              </h2>
-            </div>
-            <p className="max-w-md text-white/55 text-[15px] leading-[1.7]">
-              A curated showcase of signature films, commercials, and visual storytelling projects that capture the craft in brief.
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-6 h-px bg-white/25" />
+            <span className="text-[10px] tracking-[0.32em] text-white/50 font-medium uppercase">
+              SELECTED WORK
+            </span>
+            <span className="w-6 h-px bg-white/25" />
+          </div>
+
+          {/* Heading */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-24">
+            <h2 className="leading-[0.95] tracking-[-0.03em] font-black text-[44px] sm:text-[60px] md:text-[86px] lg:text-[110px]">
+              <span className="block gradient-text">Frames that linger,</span>
+              <span className="block gradient-text font-serif-editorial italic">
+                stories that resonate.
+              </span>
+            </h2>
+            <p className="text-white/50 text-[15px] md:text-[17px] tracking-[0.08em] max-w-md pb-3 font-normal">
+              A curated selection of narrative shorts, commercial TVCs, and visual explorations directed and shot with meticulous craft.
             </p>
           </div>
 
-          {/* 2-Column Grid Matching Live Site */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14">
+          {/* Projects 2-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 md:gap-y-20">
             {featuredProjects.map((p, i) => (
               <div
                 key={p.id}
-                className="group relative cursor-pointer"
                 onClick={() => setSelectedProject(p)}
+                className="group cursor-pointer block"
               >
-                <div className="block">
-                  {/* Card Media Container */}
+                <div className="relative">
+                  {/* Card Thumbnail */}
                   <div
-                    className="relative overflow-hidden rounded-[24px] border border-white/[0.06] bg-[#0f0f0f]"
+                    className="relative w-full rounded-[24px] sm:rounded-[28px] overflow-hidden border border-white/[0.08] bg-[#090909]"
                     style={{ aspectRatio: "16/9" }}
                   >
                     <img
@@ -184,29 +183,19 @@ export default function FeaturedWork() {
                 >
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full border border-white/20 grid place-items-center text-white bg-black/60 hover:bg-white/15 transition-colors cursor-pointer"
+                    className="absolute top-4 right-4 z-40 w-9 h-9 rounded-full border border-white/20 grid place-items-center text-white bg-black/60 hover:bg-white/15 transition-colors cursor-pointer"
                     aria-label="Close"
                   >
                     <X size={16} />
                   </button>
 
+                  {/* Cinema Player Embed Container */}
                   <div className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl">
-                    {selectedProject.videoUrl ? (
-                      <video
-                        controls
-                        autoPlay
-                        playsInline
-                        src={selectedProject.videoUrl}
-                        poster={selectedProject.image}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <img
-                        src={selectedProject.image}
-                        alt={selectedProject.title}
-                        className="w-full h-full object-cover"
-                      />
-                    )}
+                    <CinemaPlayer
+                      videoUrl={selectedProject.videoUrl}
+                      poster={selectedProject.image}
+                      title={selectedProject.title}
+                    />
                   </div>
 
                   <div>
@@ -242,5 +231,3 @@ export default function FeaturedWork() {
     </>
   );
 }
-
-

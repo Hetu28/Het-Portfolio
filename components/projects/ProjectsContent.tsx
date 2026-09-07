@@ -1,5 +1,4 @@
 ﻿"use client";
-import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
@@ -8,13 +7,15 @@ import {
   ArrowUpRight,
   Play,
   X,
-  Filter,
-  Film,
-  Clapperboard,
+  SlidersHorizontal,
+  ChevronDown,
+  Clock,
   Sparkles,
+  Award,
 } from "lucide-react";
 import { allProjectsList, projectCategories, ProjectPageItem } from "@/data/projects-page";
 import { aboutData } from "@/data/about";
+import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 
 export default function ProjectsContent() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -31,6 +32,7 @@ export default function ProjectsContent() {
         setActiveProjectModal(null);
       }
     };
+
     if (activeProjectModal) {
       document.documentElement.classList.add("modal-open");
       document.body.classList.add("modal-open");
@@ -43,6 +45,7 @@ export default function ProjectsContent() {
       document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     }
+
     return () => {
       document.documentElement.classList.remove("modal-open");
       document.body.classList.remove("modal-open");
@@ -52,7 +55,6 @@ export default function ProjectsContent() {
     };
   }, [activeProjectModal]);
 
-  // Filter projects based on category
   const filteredProjects =
     selectedCategory === "all"
       ? allProjectsList
@@ -61,135 +63,116 @@ export default function ProjectsContent() {
   return (
     <div className="relative z-10 w-full overflow-hidden pt-18 sm:pt-24 md:pt-36 pb-16 bg-transparent">
       {/* =========================================================================
-          1. KINETIC HERO HEADER WITH FILTER CONTROLS
+          1. KINETIC EDITORIAL HEADER
           ========================================================================= */}
       <div className="w-full max-w-[1400px] mx-auto px-5 md:px-8 mb-12 sm:mb-16">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 pb-6 border-b border-white/[0.08]">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 pb-8 border-b border-white/[0.08]">
           <div>
             <div className="flex items-center gap-3 mb-6">
               <span className="w-6 h-px bg-white/25" />
-              <span className="text-[10px] tracking-[0.32em] text-white/50 font-medium uppercase font-mono">
-                SELECTED WORK
+              <span className="text-[10px] tracking-[0.32em] text-white/50 font-medium uppercase">
+                COMPLETE CATALOGUE
               </span>
               <span className="w-6 h-px bg-white/25" />
             </div>
 
             <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.9] text-white select-none">
-              Curated.
+              The Archive.
             </h1>
             <p className="mt-4 text-white/60 text-base sm:text-xl font-normal max-w-xl">
-              A selected showcase of films, commercial campaigns, narrative cinema &amp;{" "}
-              <span className="font-serif-editorial italic font-normal" style={{ color: "var(--accent)" }}>
-                visual worldbuilding
+              An exhaustive archive of narrative films, commercial campaigns, and{" "}
+              <span className="font-serif-editorial italic text-white" style={{ color: "var(--accent)" }}>
+                cinematographic studies
               </span>
               .
             </p>
           </div>
 
-          {/* Desktop Filter Pills / Mobile Dropdown */}
-          <div className="flex flex-col items-start lg:items-end gap-3">
-            <span className="text-[10px] tracking-[0.28em] text-white/40 uppercase font-mono hidden lg:block">
-              FILTER BY CRAFT
-            </span>
-
-            {/* Desktop Filter Pills */}
-            <div className="hidden lg:flex flex-wrap items-center gap-2">
-              {projectCategories.map((cat) => (
+          {/* Dynamic Filter Navigation Bar */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+            {projectCategories.map((cat) => {
+              const active = selectedCategory === cat.id;
+              return (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${
-                    selectedCategory === cat.id
-                      ? "text-white shadow-lg scale-105"
-                      : "text-white/60 bg-white/[0.03] border border-white/[0.08] hover:text-white hover:bg-white/[0.06]"
+                  className={`relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                    active
+                      ? "text-white shadow-lg"
+                      : "text-white/60 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06]"
                   }`}
                   style={{
-                    background: selectedCategory === cat.id ? "var(--accent)" : undefined,
-                    boxShadow:
-                      selectedCategory === cat.id ? "0 0 24px var(--glow)" : undefined,
+                    background: active ? "var(--accent)" : undefined,
+                    boxShadow: active ? "0 0 24px var(--glow)" : undefined,
                   }}
                 >
                   {cat.label}
                 </button>
-              ))}
-            </div>
-
-            {/* Mobile Dropdown Select */}
-            <div className="relative w-full sm:w-auto lg:hidden">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full appearance-none bg-[#090909]/90 border border-white/15 text-white text-sm font-semibold rounded-full px-6 py-3.5 pr-12 shadow-xl focus:outline-none focus:border-[var(--accent)]"
-              >
-                {projectCategories.map((cat) => (
-                  <option key={cat.id} value={cat.id} className="bg-[#090909] text-white">
-                    {cat.label}
-                  </option>
-                ))}
-              </select>
-              <Filter
-                size={16}
-                className="absolute right-5 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none"
-              />
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
       {/* =========================================================================
-          2. CINEMATIC 2-COLUMN PROJECT CARDS GRID
+          2. HIGH DENSITY CINEMATIC GRID (16:9 RATIO ARCHITECTURE)
           ========================================================================= */}
       <div className="max-w-[1400px] mx-auto px-5 md:px-8">
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           <AnimatePresence>
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
-                key={project.id}
                 layout
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-                className="group flex flex-col justify-between rounded-[28px] overflow-hidden bg-[#0c0c0e]/90 border border-white/[0.08] hover:border-white/25 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+                transition={{ duration: 0.45, delay: index * 0.04 }}
+                key={project.id}
+                onClick={() => setActiveProjectModal(project)}
+                className="group relative cursor-pointer flex flex-col rounded-[24px] sm:rounded-[28px] overflow-hidden bg-[#0a0a0c]/80 border border-white/[0.08] hover:border-white/[0.2] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
               >
-                {/* Media Container with 16:9 Aspect Ratio */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#060608]">
+                {/* 16:9 Thumbnail Image Container */}
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-black">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter grayscale contrast-105 group-hover:grayscale-0"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-black/30" />
 
-                  {/* Top Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
-                    <span className="px-3.5 py-1 rounded-full text-[11px] font-bold font-mono tracking-wider uppercase bg-black/70 backdrop-blur-md border border-white/10 text-white/90">
-                      {project.category}
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full text-[11px] font-mono tracking-widest font-semibold bg-black/70 backdrop-blur-md border border-white/10 text-white/70">
-                      {project.year}
-                    </span>
+                  {/* Play Button Icon Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div
+                      className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-2xl transition-transform duration-300 group-hover:scale-110"
+                      style={{
+                        background: "var(--accent)",
+                        boxShadow: "0 0 30px var(--glow)",
+                      }}
+                    >
+                      <Play size={20} fill="currentColor" className="ml-1" />
+                    </div>
                   </div>
 
-                  {/* Bottom Play Trigger Button */}
-                  <div className="absolute bottom-4 right-4 z-10">
-                    <button
-                      onClick={() => setActiveProjectModal(project)}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white text-xs font-semibold hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-all duration-300 shadow-xl group/btn"
-                    >
-                      <Play size={12} fill="currentColor" className="text-[var(--accent)] group-hover/btn:text-white" />
-                      <span>Watch Film</span>
-                    </button>
+                  {/* Top Floating Badge */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                    <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest uppercase text-white/90">
+                      {project.category}
+                    </span>
+                    <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest text-white/80">
+                      {project.duration}
+                    </span>
                   </div>
                 </div>
 
-                {/* Card Content Footer */}
-                <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
+                {/* Card Information */}
+                <div className="p-6 sm:p-7 flex flex-col flex-grow justify-between bg-gradient-to-b from-transparent to-[#070708]/90">
                   <div>
-                    <div className="flex items-center justify-between gap-4 mb-2">
-                      <h3 className="text-2xl sm:text-3xl font-black text-white group-hover:text-white transition-colors">
+                    <div className="flex items-baseline justify-between gap-2 mb-2">
+                      <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight group-hover:text-[var(--accent)] transition-colors">
                         {project.title}
                       </h3>
                       <span className="font-serif-editorial italic text-sm text-[var(--accent)]">
@@ -227,8 +210,8 @@ export default function ProjectsContent() {
         <div className="absolute inset-0 flex flex-col justify-center items-center overflow-hidden opacity-25 select-none pointer-events-none">
           <div className="marquee-fast-left">
             <div className="text-4xl sm:text-6xl md:text-7xl font-black uppercase text-white tracking-tight whitespace-nowrap px-4">
-              {aboutData.ctaMarquee.line1.join(" â€¢ ")} â€¢{" "}
-              {aboutData.ctaMarquee.line1.join(" â€¢ ")} â€¢
+              {aboutData.ctaMarquee.line1.join(" • ")} •{" "}
+              {aboutData.ctaMarquee.line1.join(" • ")} •
             </div>
           </div>
           <div className="marquee-fast-right mt-3">
@@ -236,8 +219,8 @@ export default function ProjectsContent() {
               className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight whitespace-nowrap px-4"
               style={{ color: "var(--accent)" }}
             >
-              {aboutData.ctaMarquee.line2.join(" â€¢ ")} â€¢{" "}
-              {aboutData.ctaMarquee.line2.join(" â€¢ ")} â€¢
+              {aboutData.ctaMarquee.line2.join(" • ")} •{" "}
+              {aboutData.ctaMarquee.line2.join(" • ")} •
             </div>
           </div>
         </div>
@@ -284,20 +267,17 @@ export default function ProjectsContent() {
                   <button
                     onClick={() => setActiveProjectModal(null)}
                     aria-label="Close modal"
-                    className="absolute top-5 right-5 z-30 w-11 h-11 rounded-full bg-black/70 border border-white/20 text-white flex items-center justify-center hover:bg-[var(--accent)] transition-colors cursor-pointer"
+                    className="absolute top-5 right-5 z-40 w-11 h-11 rounded-full bg-black/70 border border-white/20 text-white flex items-center justify-center hover:bg-[var(--accent)] transition-colors cursor-pointer"
                   >
                     <X size={20} />
                   </button>
 
-                  {/* Video Player Box */}
+                  {/* Cinema Player Container */}
                   <div className="relative aspect-[16/9] w-full bg-black">
-                    <video
-                      controls
-                      autoPlay
-                      playsInline
-                      src={activeProjectModal.videoUrl}
+                    <CinemaPlayer
+                      videoUrl={activeProjectModal.videoUrl}
                       poster={activeProjectModal.image}
-                      className="w-full h-full object-cover"
+                      title={activeProjectModal.title}
                     />
                   </div>
 
@@ -309,9 +289,9 @@ export default function ProjectsContent() {
                           <span className="text-[10px] tracking-[0.3em] uppercase font-mono font-bold" style={{ color: "var(--accent)" }}>
                             {activeProjectModal.category}
                           </span>
-                          <span className="text-white/30">â€¢</span>
+                          <span className="text-white/30">•</span>
                           <span className="text-xs text-white/60 font-mono">
-                            {activeProjectModal.year} â€” {activeProjectModal.duration}
+                            {activeProjectModal.year} — {activeProjectModal.duration}
                           </span>
                         </div>
                         <h2 className="text-2xl sm:text-4xl font-black text-white">
@@ -351,5 +331,3 @@ export default function ProjectsContent() {
     </div>
   );
 }
-
-
