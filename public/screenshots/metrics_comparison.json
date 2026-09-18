@@ -1,0 +1,52 @@
+{
+  "ref": {
+    "390": {},
+    "1440": {}
+  },
+  "curr": {
+    "390": {
+      "hero": {
+        "height": 1112,
+        "paddingTop": "16px",
+        "paddingBottom": "24px",
+        "h1FontSize": "44px",
+        "h1LineHeight": "44px",
+        "h2FontSize": "28px",
+        "pFontSize": "13px",
+        "pMaxWidth": "440px"
+      },
+      "showreel": {
+        "height": 481,
+        "paddingTop": "56px",
+        "paddingBottom": "56px"
+      },
+      "portfolio": {
+        "cardCount": 6,
+        "firstCardWidth": 358,
+        "firstCardHeight": 289
+      }
+    },
+    "1440": {
+      "hero": {
+        "height": 716,
+        "paddingTop": "32px",
+        "paddingBottom": "24px",
+        "h1FontSize": "84px",
+        "h1LineHeight": "84px",
+        "h2FontSize": "50px",
+        "pFontSize": "14px",
+        "pMaxWidth": "440px"
+      },
+      "showreel": {
+        "height": 1106,
+        "paddingTop": "100.8px",
+        "paddingBottom": "100.8px"
+      },
+      "portfolio": {
+        "cardCount": 6,
+        "firstCardWidth": 644,
+        "firstCardHeight": 456
+      }
+    }
+  }
+}
