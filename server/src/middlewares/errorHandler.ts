@@ -8,9 +8,10 @@ export function errorHandler(
   res: Response,
   _next: NextFunction
 ): void {
+  const isProduction = env.NODE_ENV === "production";
   const isAppError = err instanceof AppError;
-  const isSyntaxError = err instanceof SyntaxError && err.status === 400 && "body" in err;
-  const isPayloadTooLarge = err.type === "entity.too.large" || err.status === 413;
+  const isSyntaxError = err instanceof SyntaxError && (err as any).status === 400 && "body" in err;
+  const isPayloadTooLarge = err.type === "entity.too.large" || (err as any).status === 413;
   const isCorsError = err.message && err.message.includes("CORS blocked");
 
   let statusCode = 500;
@@ -36,8 +37,6 @@ export function errorHandler(
   } else if (!isProduction) {
     errorMessage = err.message || errorMessage;
   }
-
-  const isProduction = env.NODE_ENV === "production";
 
   // Security event logging: log error metadata without recording sensitive request bodies
   console.error(`[SECURITY/ERROR] ${req.method} ${req.originalUrl || req.url} - ${statusCode}:`, {

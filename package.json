@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "npx tsx scripts/test_phase4_e2e.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

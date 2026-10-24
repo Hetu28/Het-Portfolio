@@ -74,6 +74,16 @@ async function runApiTests() {
       );
     }
 
+    // Empty result when category does not exist
+    {
+      const res = await fetch(`${baseUrl}/api/v1/projects?category=nonexistent`);
+      const body = await res.json();
+      assert(res.status === 200, "GET /api/v1/projects?category=nonexistent returns 200 OK");
+      assert(body.success === true, "Response has success: true for empty query");
+      assert(Array.isArray(body.data) && body.data.length === 0, "Empty dataset returns empty array []");
+      assert(body.pagination.total === 0, "Pagination total is 0 for empty dataset");
+    }
+
     // -------------------------------------------------------------------------
     // 2. GET /api/v1/projects/:id
     // -------------------------------------------------------------------------
@@ -135,6 +145,14 @@ async function runApiTests() {
         body.data.every((c: any) => c.category === "Sound & Technical"),
         "Filtered items only contain Sound & Technical"
       );
+    }
+
+    // Empty result when category does not exist
+    {
+      const res = await fetch(`${baseUrl}/api/v1/contributions?category=NonExistentCategory`);
+      const body = await res.json();
+      assert(res.status === 200, "Filter contributions with unknown category returns 200");
+      assert(Array.isArray(body.data) && body.data.length === 0, "Empty contributions returns empty array []");
     }
 
     // -------------------------------------------------------------------------
