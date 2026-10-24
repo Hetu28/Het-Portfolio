@@ -1,0 +1,37 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: het-portfolio-api
+    runtime: node
+    plan: starter
+    rootDir: server
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npx prisma migrate deploy && node dist/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: CORS_ORIGIN
+        value: https://het-portfolio-phi.vercel.app
+      - key: API_PREFIX
+        value: /api/v1
+      - key: REQUEST_SIZE_LIMIT
+        value: 10kb
+      - key: DATABASE_URL
+        fromDatabase:
+          name: het-portfolio-db
+          property: connectionString
+      - key: ADMIN_API_KEY
+        generateValue: true
+      - key: TRUST_PROXY
+        value: 1
+
+# Managed PostgreSQL Database
+databases:
+  - name: het-portfolio-db
+    databaseName: het_portfolio
+    user: het_admin
+    plan: basic-256mb
+    region: oregon

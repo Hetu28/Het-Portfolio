@@ -8,10 +8,11 @@ dist/
 .env
 .env*.local
 
-# Database files
+# Database files & backups
 *.db
 *.db-journal
 dev.db
+backups/
 
 # Logs & temp
 npm-debug.log*

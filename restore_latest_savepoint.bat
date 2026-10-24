@@ -1,13 +1,13 @@
 @echo off
-title Restore to Latest Save Point (2026-10-24 18:29:04)
+title Restore to Latest Save Point (2026-10-24 18:52:43)
 color 0E
 echo ========================================================
 echo        HET PATEL PORTFOLIO - RESTORE POINT RECOVERY
 echo ========================================================
 echo.
-echo Restoring project to Save Point: 2026-10-24 18:29:04 ...
+echo Restoring project to Save Point: 2026-10-24 18:52:43 ...
 echo.
 xcopy /E /Y /I "D:\A.I\het-portfolio\.restore_points\latest\*" "D:\A.I\het-portfolio\"
 echo.
-echo [OK] Restore complete! Project is reverted to 2026-10-24 18:29:04.
+echo [OK] Restore complete! Project is reverted to 2026-10-24 18:52:43.
 pause
