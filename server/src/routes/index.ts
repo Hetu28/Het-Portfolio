@@ -6,8 +6,13 @@ import contributionRoutes from "./contribution.routes";
 import collaborationRoutes from "./collaboration.routes";
 import faqRoutes from "./faq.routes";
 import inquiryRoutes from "./inquiry.routes";
+import adminRoutes from "./admin.routes";
+import { globalApiRateLimiter, adminAuthRateLimiter } from "../middlewares/rateLimiter";
 
 const router = Router();
+
+// Apply global rate limiting on public API endpoints
+router.use(globalApiRateLimiter);
 
 // Mount public routes under /api/v1
 router.use("/", healthRoutes);
@@ -17,5 +22,8 @@ router.use("/", contributionRoutes);
 router.use("/", collaborationRoutes);
 router.use("/", faqRoutes);
 router.use("/", inquiryRoutes);
+
+// Mount protected administrative routes under /api/v1/admin
+router.use("/admin", adminAuthRateLimiter, adminRoutes);
 
 export default router;

@@ -11,7 +11,7 @@ export function createApp(): Application {
   const app = express();
 
   // Trust upstream reverse proxies (Vercel, Render, Railway, Nginx)
-  app.set("trust proxy", 1);
+  app.set("trust proxy", env.TRUST_PROXY);
 
   // Security headers & CORS
   app.use(securityHeaders);

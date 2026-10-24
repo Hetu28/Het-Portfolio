@@ -16,7 +16,8 @@
     "db:reset": "tsx prisma/reset.ts",
     "test:db": "tsx src/tests/database.test.ts",
     "test:api": "tsx src/tests/api.test.ts",
-    "test": "npm run test:db && npm run test:api",
+    "test:security": "tsx src/tests/security.test.ts",
+    "test": "npm run test:db && npm run test:api && npm run test:security",
     "typecheck": "tsc --noEmit"
   },
   "prisma": {

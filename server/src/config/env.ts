@@ -12,6 +12,8 @@ const envSchema = z.object({
   API_PREFIX: z.string().default("/api/v1"),
   REQUEST_SIZE_LIMIT: z.string().default("10kb"),
   DATABASE_URL: z.string().default("file:./dev.db"),
+  ADMIN_API_KEY: z.string().min(16, "Admin API key must be at least 16 characters").default("dev-admin-secret-key-change-in-prod-12345"),
+  TRUST_PROXY: z.coerce.number().default(1),
 });
 
 const parsed = envSchema.safeParse(process.env);
