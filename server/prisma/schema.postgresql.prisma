@@ -1,0 +1,209 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// 1. PROJECT ENQUIRY WORKFLOW
+// ============================================================================
+model Inquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?  @default("General Collaboration")
+  referral  String?
+  message   String
+  status    String   @default("UNREAD") // UNREAD, READ, REPLIED, ARCHIVED
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ============================================================================
+// 2. PROJECTS & STILLS (PORTFOLIO & CASE STUDIES)
+// ============================================================================
+model Project {
+  id             String                   @id // slug e.g. "a-flowers-tale"
+  title          String
+  category       String                   // Primary category (e.g. "Short Film")
+  role           String
+  year           String
+  duration       String
+  image          String
+  videoUrl       String?
+  synopsis       String
+  client         String?
+  type           String                   @default("video") // "video" | "behance" | "gallery"
+  behanceUrl     String?
+  featured       Boolean                  @default(false)
+  sortOrder      Int                      @default(0)
+  createdAt      DateTime                 @default(now())
+  updatedAt      DateTime                 @updatedAt
+
+  categories     ProjectCategoryMapping[]
+  deliverables   ProjectDeliverable[]
+  stills         ProjectStill[]
+  technicalSpecs TechnicalSpecs?
+
+  @@index([featured])
+  @@index([sortOrder])
+}
+
+model ProjectCategoryMapping {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  category  String  // e.g. "narrative", "commercial", "documentary", "music-video", "cinematography", "color"
+
+  @@unique([projectId, category])
+  @@index([category])
+}
+
+model ProjectDeliverable {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  name      String
+  sortOrder Int     @default(0)
+
+  @@index([projectId])
+}
+
+model ProjectStill {
+  id        String  @id // e.g. "pole-47-01", "void-01"
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  url       String
+  title     String
+  caption   String?
+  lighting  String?
+  aspect    String? @default("wide") // "wide" | "standard" | "portrait"
+  sortOrder Int     @default(0)
+
+  @@index([projectId])
+}
+
+model TechnicalSpecs {
+  id            String  @id @default(cuid())
+  projectId     String  @unique
+  project       Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  camera        String?
+  lens          String?
+  aspectRatio   String?
+  colorGrading  String?
+  lightingStyle String?
+  location      String?
+}
+
+// ============================================================================
+// 3. FILMOGRAPHY (CATEGORIZED CREDITS)
+// ============================================================================
+model FilmographyGroup {
+  id        String            @id @default(cuid())
+  role      String            @unique // "DIRECTOR & WRITER", "CINEMATOGRAPHER (DOP)", "EDITOR"
+  subtitle  String?
+  sortOrder Int               @default(0)
+  items     FilmographyItem[]
+}
+
+model FilmographyItem {
+  id        String           @id @default(cuid())
+  groupId   String
+  group     FilmographyGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  title     String
+  meta      String           // "SHORT FILM", "ADVERTISEMENT", "SILENT FILM", etc.
+  sortOrder Int              @default(0)
+
+  @@index([groupId])
+}
+
+// ============================================================================
+// 4. PRODUCTION CONTRIBUTIONS ("CINEMA SEATS")
+// ============================================================================
+model ContributionFilm {
+  id        String @id @default(cuid())
+  seat      String @unique // "A1", "A2", ..., "F2"
+  title     String
+  role      String
+  year      String
+  category  String // "Direction & AD", "Cinematography & Camera", "Production Management", "Sound & Technical"
+  sortOrder Int    @default(0)
+
+  @@index([category])
+  @@index([year])
+}
+
+// ============================================================================
+// 5. FREELANCE & BRAND COLLABORATIONS
+// ============================================================================
+model FreelanceProject {
+  id        String                 @id @default(cuid())
+  title     String                 @unique // "Crafting Gifts", "Label Fiora", "SculptHer"
+  category  String
+  sortOrder Int                    @default(0)
+  roles     FreelanceProjectRole[]
+}
+
+model FreelanceProjectRole {
+  id                 String           @id @default(cuid())
+  freelanceProjectId String
+  freelanceProject   FreelanceProject @relation(fields: [freelanceProjectId], references: [id], onDelete: Cascade)
+  role               String
+  sortOrder          Int              @default(0)
+
+  @@index([freelanceProjectId])
+}
+
+model BrandCollaboration {
+  id        String  @id // "crafting-gifts", "label-fiora", etc.
+  name      String
+  role      String
+  year      String
+  category  String
+  logo      String
+  extra     String?
+  sortOrder Int     @default(0)
+}
+
+// ============================================================================
+// 6. FREQUENTLY ASKED QUESTIONS (FAQS)
+// ============================================================================
+model FAQ {
+  id        Int    @id @default(autoincrement())
+  question  String
+  answer    String
+  sortOrder Int    @default(0)
+}
+
+// ============================================================================
+// 7. SITE SETTINGS & METADATA
+// ============================================================================
+model SiteSetting {
+  key         String   @id // e.g. "availability_badge", "email", "phone"
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================================================
+// 8. ADMIN USERS (CREDENTIALS PROTECTED)
+// ============================================================================
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+}
