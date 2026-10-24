@@ -6,6 +6,8 @@ export interface CinemaSeatProject {
   category: "Direction & AD" | "Cinematography & Camera" | "Production Management" | "Sound & Technical";
 }
 
+export type ContributionFilm = CinemaSeatProject;
+
 export interface FreelanceProject {
   title: string;
   category: string;

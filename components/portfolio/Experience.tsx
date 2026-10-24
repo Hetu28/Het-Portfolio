@@ -1,11 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
-import { contributionFilms, freelanceProjects } from "@/data/experience";
+import React, { useState, useEffect } from "react";
+import { contributionFilms, freelanceProjects, ContributionFilm, FreelanceProject } from "@/data/experience";
+import { fetchContributions, fetchCollaborations } from "@/lib/api";
 import { Film } from "lucide-react";
 
 export default function Experience() {
+  const [films, setFilms] = useState<ContributionFilm[]>(contributionFilms);
+  const [freelance, setFreelance] = useState<FreelanceProject[]>(freelanceProjects);
   const [selectedRole, setSelectedRole] = useState<string>("All");
+
+  useEffect(() => {
+    let active = true;
+    fetchContributions().then((data) => {
+      if (active && data && data.length > 0) {
+        setFilms(data);
+      }
+    });
+    fetchCollaborations().then((data) => {
+      if (active && data?.freelance && data.freelance.length > 0) {
+        setFreelance(data.freelance);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const getRoleColor = (cat: string) => {
     switch (cat) {
@@ -89,7 +109,7 @@ export default function Experience() {
             ========================================================================= */}
         <div className="relative">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-3 md:gap-3.5">
-            {contributionFilms.map((film) => {
+            {films.map((film) => {
               const isMatch = selectedRole === "All" || film.category === selectedRole;
               const roleColor = getRoleColor(film.category);
 
@@ -187,7 +207,7 @@ export default function Experience() {
 
           {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-            {freelanceProjects.map((proj) => (
+            {freelance.map((proj) => (
               <div
                 key={proj.title}
                 className="group relative rounded-2xl p-6 sm:p-7 bg-[#0c0c0f]/90 border border-white/[0.08] hover:border-[var(--accent)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_12px_35px_-10px_var(--glow)] flex flex-col justify-between min-h-[170px]"

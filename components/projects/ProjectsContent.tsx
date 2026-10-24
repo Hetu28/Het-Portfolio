@@ -13,17 +13,28 @@ import {
   Film,
 } from "lucide-react";
 import { allProjectsList, projectCategories, ProjectPageItem } from "@/data/projects-page";
+import { fetchProjects } from "@/lib/api";
 import { aboutData } from "@/data/about";
 import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 import BehanceProjectView from "@/components/portfolio/BehanceProjectView";
 
 export default function ProjectsContent() {
+  const [projectsList, setProjectsList] = useState<ProjectPageItem[]>(allProjectsList);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [activeProjectModal, setActiveProjectModal] = useState<ProjectPageItem | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    let active = true;
+    fetchProjects().then((data) => {
+      if (active && data && data.length > 0) {
+        setProjectsList(data as ProjectPageItem[]);
+      }
+    });
+    return () => {
+      active = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -57,8 +68,8 @@ export default function ProjectsContent() {
 
   const filteredProjects =
     selectedCategory === "all"
-      ? allProjectsList
-      : allProjectsList.filter((p) => p.categories.includes(selectedCategory));
+      ? projectsList
+      : projectsList.filter((p) => p.categories.includes(selectedCategory));
 
   return (
     <div className="relative z-10 w-full overflow-hidden pt-18 sm:pt-24 md:pt-36 pb-16 bg-transparent">

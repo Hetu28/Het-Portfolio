@@ -1,12 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Plus, ArrowUpRight, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { faqData } from "@/data/faq";
+import { faqData, FAQItem } from "@/data/faq";
+import { fetchFaqs } from "@/lib/api";
 
 export default function FAQ() {
+  const [faqs, setFaqs] = useState<FAQItem[]>(faqData);
   const [openId, setOpenId] = useState<number | null>(1);
+
+  useEffect(() => {
+    let active = true;
+    fetchFaqs().then((data) => {
+      if (active && data && data.length > 0) {
+        setFaqs(data);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const toggleItem = (id: number) => {
     setOpenId(openId === id ? null : id);
@@ -78,7 +92,7 @@ export default function FAQ() {
               RIGHT COLUMN: Interactive FAQ Accordion List (Aligned Under FAQ Heading)
               ========================================================================= */}
           <div className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-4 lg:pt-[118px]">
-            {faqData.map((item) => {
+            {faqs.map((item) => {
               const isOpen = openId === item.id;
               return (
                 <div

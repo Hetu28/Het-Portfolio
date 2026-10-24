@@ -4,16 +4,27 @@ import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ArrowUpRight, X, Sparkles, Film } from "lucide-react";
 import { featuredProjects, Project } from "@/data/projects";
+import { fetchProjects } from "@/lib/api";
 import { motion, AnimatePresence } from "framer-motion";
 import CinemaPlayer from "@/components/portfolio/CinemaPlayer";
 import BehanceProjectView from "@/components/portfolio/BehanceProjectView";
 
 export default function FeaturedWork() {
+  const [projects, setProjects] = useState<Project[]>(featuredProjects);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    let active = true;
+    fetchProjects({ featured: true }).then((data) => {
+      if (active && data && data.length > 0) {
+        setProjects(data);
+      }
+    });
+    return () => {
+      active = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -79,7 +90,7 @@ export default function FeaturedWork() {
 
           {/* Projects 2-Column Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 md:gap-y-20">
-            {featuredProjects.map((p, i) => {
+            {projects.map((p, i) => {
               const isBehance = p.type === "behance" || (p.stills && p.stills.length > 0);
               return (
                 <div

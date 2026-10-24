@@ -1,9 +1,24 @@
 "use client";
 
-import React from "react";
-import { filmographyData } from "@/data/filmography";
+import React, { useState, useEffect } from "react";
+import { filmographyData, FilmographyGroup } from "@/data/filmography";
+import { fetchFilmography } from "@/lib/api";
 
 export default function Filmography() {
+  const [groups, setGroups] = useState<FilmographyGroup[]>(filmographyData);
+
+  useEffect(() => {
+    let active = true;
+    fetchFilmography().then((data) => {
+      if (active && data && data.length > 0) {
+        setGroups(data);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <section id="filmography" className="relative z-10 pt-20 md:pt-28 pb-8 md:pb-12">
       <div className="max-w-[1400px] mx-auto px-5 md:px-8">
@@ -26,7 +41,7 @@ export default function Filmography() {
 
         {/* Filmography Groups */}
         <div className="space-y-14 md:space-y-20">
-          {filmographyData.map((group, groupIdx) => (
+          {groups.map((group, groupIdx) => (
             <div
               key={group.role}
               className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start"

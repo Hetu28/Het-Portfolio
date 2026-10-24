@@ -1,22 +1,47 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, ArrowUpRight, Check, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Check, Instagram, Youtube, Linkedin, Loader2, AlertCircle } from "lucide-react";
 import { BehanceIcon } from "@/components/icons/BehanceIcon";
 import { siteSettings } from "@/data/site";
+import { submitEnquiry } from "@/lib/api";
 
 export default function Contact() {
   const { contact, socials } = siteSettings;
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
+    if (isSubmitting || submitted) return;
+
+    if (formData.message.trim().length < 10) {
+      setErrorMessage("Please enter at least 10 characters for your project description.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    const res = await submitEnquiry({
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    });
+
+    setIsSubmitting(false);
+
+    if (res.success) {
+      setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setSubmitted(false), 4000);
-    }, 1000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } else {
+      setErrorMessage(res.error || "Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -173,23 +198,39 @@ export default function Contact() {
                   <textarea
                     rows={4}
                     required
+                    minLength={10}
                     placeholder="A few lines on what you're making, timeline and references..."
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, message: e.target.value });
+                      if (errorMessage) setErrorMessage(null);
+                    }}
                     className="w-full bg-transparent border-b border-white/15 focus:border-[var(--accent)] outline-none py-2.5 text-[15px] text-white placeholder-white/20 transition resize-none"
                   />
                 </div>
 
+                {errorMessage && (
+                  <div className="flex items-center gap-2 p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs">
+                    <AlertCircle size={15} className="shrink-0" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  disabled={submitted}
-                  className="w-full mt-4 py-3.5 rounded-full font-bold tracking-[0.18em] text-[12px] uppercase text-white flex items-center justify-center gap-2 group transition-all duration-300 hover:scale-[1.01]"
+                  disabled={isSubmitting || submitted}
+                  className="w-full mt-4 py-3.5 rounded-full font-bold tracking-[0.18em] text-[12px] uppercase text-white flex items-center justify-center gap-2 group transition-all duration-300 hover:scale-[1.01] disabled:opacity-70 disabled:cursor-not-allowed"
                   style={{
                     background: "var(--accent)",
                     boxShadow: "0 10px 30px -8px var(--glow)",
                   }}
                 >
-                  {submitted ? (
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>SENDING...</span>
+                    </>
+                  ) : submitted ? (
                     <>
                       <Check size={16} /> Message Sent
                     </>
