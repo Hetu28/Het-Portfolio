@@ -81,7 +81,38 @@ The seed script is strictly idempotent using `upsert` queries. It **never modifi
 
 ## 4. Platform Deployment Options
 
-### Option A: Render (Recommended Blueprint)
+### Option A: Vercel (Preferred by User)
+The Express backend is pre-configured to run seamlessly on Vercel as a serverless project using `server/vercel.json` and `server/api/index.ts`:
+
+1. **Import the Repository in Vercel**:
+   - In your [Vercel Dashboard](https://vercel.com), click **Add New... > Project**.
+   - Select your GitHub repository: `Hetu28/Het-Portfolio`.
+   - In the configuration screen, click **Edit** next to **Root Directory** and select `server`.
+   - Framework Preset: select **Other**.
+   - Build Command: `npx prisma generate && npm run build`
+   - Output Directory: leave default or empty.
+
+2. **Attach Vercel Postgres (Managed Database)**:
+   - In the project dashboard, navigate to the **Storage** tab.
+   - Click **Create Database > Postgres** (Vercel Postgres powered by Neon).
+   - Click **Connect** to connect it to your backend project. Vercel automatically populates `DATABASE_URL` and `POSTGRES_PRISMA_URL`.
+
+3. **Configure Environment Variables**:
+   In **Project Settings > Environment Variables**, add:
+   - `NODE_ENV`: `production`
+   - `CORS_ORIGIN`: `https://het-portfolio-phi.vercel.app`
+   - `ADMIN_API_KEY`: `<generate-a-32-character-random-secret>`
+   - `API_PREFIX`: `/api/v1`
+   - `REQUEST_SIZE_LIMIT`: `10kb`
+   - `TRUST_PROXY`: `1`
+
+4. **Deploy & Apply Migrations**:
+   - Click **Deploy**. Vercel will build and assign a domain (e.g., `https://het-portfolio-backend.vercel.app`).
+   - Run the initial migration via the Vercel CLI (`vercel env pull` then `npm run prisma:deploy`) or via a one-time build script.
+
+---
+
+### Option B: Render (Blueprint)
 The project includes a ready-to-deploy Render Blueprint at `server/render.yaml`:
 1. In the Render Dashboard, click **New > Blueprint**.
 2. Connect your GitHub repository: `Hetu28/Het-Portfolio`.
@@ -92,14 +123,18 @@ The project includes a ready-to-deploy Render Blueprint at `server/render.yaml`:
    - Wires `DATABASE_URL` automatically between the database and the web service.
 4. Set `CORS_ORIGIN=https://het-portfolio-phi.vercel.app` in the web service environment settings.
 
-### Option B: Railway
+---
+
+### Option C: Railway
 The project includes a configuration file at `server/railway.json`:
 1. In Railway, click **New Project > Provision PostgreSQL**.
 2. Click **New Service > GitHub Repo > Het-Portfolio**, setting the root directory to `server`.
 3. Railway automatically detects `railway.json`.
 4. Add environment variables: `DATABASE_URL` (linked from Postgres plugin), `CORS_ORIGIN`, `NODE_ENV=production`.
 
-### Option C: Docker Container Deployment
+---
+
+### Option D: Docker Container Deployment
 A hardened, multi-stage `server/Dockerfile` is provided:
 ```bash
 docker build -t het-portfolio-api:latest server/
