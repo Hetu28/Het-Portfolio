@@ -9,25 +9,62 @@ export default function Experience() {
 
   const getRoleColor = (cat: string) => {
     switch (cat) {
-      case "Direction & AD":
-        return "var(--accent)";
+      case "Director & Writer":
+        return "#39FF14";
       case "Cinematography & Camera":
-        return "#38bdf8";
-      case "Production Management":
-        return "#f59e0b";
-      case "Sound & Technical":
+        return "var(--accent)";
+      case "Assistant Director (AD)":
         return "#a855f7";
+      case "Production Management":
+        return "#f97316";
+      case "Sound & Technical":
+        return "#ff2a85";
       default:
         return "var(--accent)";
     }
   };
 
-  const getBadgeStyle = (role: string) => {
-    if (role.includes("Director")) return "text-[var(--accent)] border-[var(--accent)]/30 bg-[var(--accent)]/10";
-    if (role.includes("Cinematographer")) return "text-[#38bdf8] border-[#38bdf8]/30 bg-[#38bdf8]/10";
-    if (role.includes("Editor")) return "text-[#a855f7] border-[#a855f7]/30 bg-[#a855f7]/10";
-    if (role.includes("Writer")) return "text-[#f59e0b] border-[#f59e0b]/30 bg-[#f59e0b]/10";
-    return "text-white/80 border-white/20 bg-white/5";
+  const getBadgeStyle = (role: string): React.CSSProperties => {
+    if (role.includes("Director") || role.includes("Writer")) {
+      return {
+        color: "#39FF14",
+        borderColor: "rgba(57, 255, 20, 0.45)",
+        backgroundColor: "rgba(57, 255, 20, 0.08)",
+      };
+    }
+    if (role.includes("Cinematographer") || role.includes("Camera")) {
+      return {
+        color: "#ff2800",
+        borderColor: "rgba(255, 40, 0, 0.45)",
+        backgroundColor: "rgba(255, 40, 0, 0.08)",
+      };
+    }
+    if (role.includes("AD") || role.includes("Assistant Director")) {
+      return {
+        color: "#a855f7",
+        borderColor: "rgba(168, 85, 247, 0.45)",
+        backgroundColor: "rgba(168, 85, 247, 0.08)",
+      };
+    }
+    if (role.includes("Production") || role.includes("PM")) {
+      return {
+        color: "#f97316",
+        borderColor: "rgba(249, 115, 22, 0.45)",
+        backgroundColor: "rgba(249, 115, 22, 0.08)",
+      };
+    }
+    if (role.includes("Editor") || role.includes("Sound") || role.includes("Technical")) {
+      return {
+        color: "#ff2a85",
+        borderColor: "rgba(255, 42, 133, 0.45)",
+        backgroundColor: "rgba(255, 42, 133, 0.08)",
+      };
+    }
+    return {
+      color: "rgba(255, 255, 255, 0.8)",
+      borderColor: "rgba(255, 255, 255, 0.2)",
+      backgroundColor: "rgba(255, 255, 255, 0.05)",
+    };
   };
 
   const filteredFilms = contributionFilms.filter(
@@ -67,7 +104,7 @@ export default function Experience() {
           {/* Filter Pills - Vertically Centered & Enhanced Box Sizing */}
           <div className="max-w-xl flex flex-col justify-center">
             <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 lg:justify-end">
-              {["All", "Cinematography & Camera", "Direction & AD", "Production Management", "Sound & Technical"].map((cat) => (
+              {["All", "Director & Writer", "Cinematography & Camera", "Assistant Director (AD)", "Production Management", "Sound & Technical"].map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedRole(cat)}
@@ -77,7 +114,7 @@ export default function Experience() {
                       : "bg-white/[0.05] text-white/65 hover:text-white hover:bg-white/[0.1] border border-white/[0.08]"
                   }`}
                 >
-                  {cat === "All" ? "All Sets" : cat}
+                  {cat === "All" ? "All Projects" : cat}
                 </button>
               ))}
             </div>
@@ -140,20 +177,24 @@ export default function Experience() {
           {/* Bottom Legend */}
           <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 text-[11px] text-white/60 font-mono">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full" style={{ background: "var(--accent)" }} />
-              <span>Direction & AD</span>
+              <span className="w-2 h-2 rounded-full" style={{ background: "#39FF14" }} />
+              <span>Director & Writer</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-sky-400" />
+              <span className="w-2 h-2 rounded-full" style={{ background: "var(--accent)" }} />
               <span>Cinematography & Camera</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-400" />
+              <span className="w-2 h-2 rounded-full" style={{ background: "#a855f7" }} />
+              <span>Assistant Director (AD)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full" style={{ background: "#f97316" }} />
               <span>Production Management</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-purple-400" />
-              <span>Sound & Technical</span>
+              <span className="w-2 h-2 rounded-full" style={{ background: "#ff2a85" }} />
+              <span>Sound & Technical / Post</span>
             </div>
           </div>
         </div>
@@ -215,9 +256,8 @@ export default function Experience() {
                   {proj.roles.map((role) => (
                     <span
                       key={role}
-                      className={`text-[11px] font-medium px-3 py-1 rounded-md border tracking-wide transition-all ${getBadgeStyle(
-                        role
-                      )}`}
+                      style={getBadgeStyle(role)}
+                      className="text-[11px] font-medium px-3 py-1 rounded-md border tracking-wide transition-all"
                     >
                       {role}
                     </span>

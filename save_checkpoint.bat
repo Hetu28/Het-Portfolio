@@ -8,7 +8,7 @@ echo Current Timestamp: %date% %time%
 echo Saving state to _checkpoints\checkpoint_parity_complete ...
 echo.
 
-set PATH=D:\A.I\nodejs;D:\A.I\Git\cmd;D:\A.I\Git\Git\cmd;%PATH%
+set PATH=D:\A.I\nodejs;D:\A.I\Git\Git\cmd;%PATH%
 node "D:\A.I\het-portfolio\scripts\save_checkpoint_now.js"
 
 echo.

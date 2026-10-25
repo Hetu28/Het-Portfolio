@@ -1,11 +1,9 @@
-﻿import Background from "@/components/portfolio/Background";
+import Background from "@/components/portfolio/Background";
 import Nav from "@/components/portfolio/Nav";
 import Hero from "@/components/portfolio/Hero";
 import MarqueeBanner from "@/components/portfolio/MarqueeBanner";
 import Showreel from "@/components/portfolio/Showreel";
 import FeaturedWork from "@/components/portfolio/FeaturedWork";
-import About from "@/components/portfolio/About";
-import Filmography from "@/components/portfolio/Filmography";
 import FAQ from "@/components/portfolio/FAQ";
 import Experience from "@/components/portfolio/Experience";
 import Software from "@/components/portfolio/Software";
@@ -37,13 +35,7 @@ export default function Home() {
       {/* 5. Featured / Curated Frames */}
       <FeaturedWork />
 
-      {/* 6. About / Stats */}
-      <About />
-
-      {/* 7. Filmography (Categorized Body of Work) */}
-      <Filmography />
-
-      {/* 8. On Set Experience */}
+      {/* 7. On Set Experience (My Contributions) */}
       <Experience />
 
       {/* 9. FAQ (Frequently Asked Questions) */}

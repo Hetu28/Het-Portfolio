@@ -64,7 +64,7 @@ export default function Showreel() {
             className="leading-[1.05] sm:leading-[1.02] tracking-[-0.03em] font-black text-[44px] sm:text-[60px] md:text-[86px] lg:text-[110px]"
           >
             <span className="block gradient-text pb-1 sm:pb-2">Before you know my work,</span>
-            <span className="block gradient-text font-serif-editorial italic pb-1 sm:pb-2">experience it.</span>
+            <span className="block font-serif-editorial italic pb-1 sm:pb-2" style={{ color: "var(--accent)" }}>experience it.</span>
           </motion.h2>
 
           <p className="mt-8 text-white/50 text-[15px] md:text-[17px] tracking-[0.08em]">

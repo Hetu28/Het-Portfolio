@@ -2,7 +2,7 @@
 title Het Patel Portfolio - Restore Checkpoint
 echo ===================================================
 echo   RESTORE POINT - HET PATEL PORTFOLIO
-echo   Last Updated: 2026-10-24 16:11:26
+echo   Last Updated: 2026-10-25 16:22:44
 echo ===================================================
 echo.
 echo WARNING: This will overwrite current working files with
@@ -26,7 +26,6 @@ xcopy /E /I /Y "_checkpoints\checkpoint_parity_complete\styles" "styles"
 xcopy /E /I /Y "_checkpoints\checkpoint_parity_complete\scripts" "scripts"
 xcopy /E /I /Y "_checkpoints\checkpoint_parity_complete\CV" "CV"
 xcopy /E /I /Y "_checkpoints\checkpoint_parity_complete\Logos" "Logos"
-xcopy /E /I /Y "_checkpoints\checkpoint_parity_complete\docs" "docs"
 
 copy /Y "_checkpoints\checkpoint_parity_complete\package.json" "package.json"
 copy /Y "_checkpoints\checkpoint_parity_complete\package-lock.json" "package-lock.json"
@@ -37,6 +36,6 @@ copy /Y "_checkpoints\checkpoint_parity_complete\tsconfig.json" "tsconfig.json"
 
 echo.
 echo ===================================================
-echo   SUCCESS: PORTFOLIO RESTORED TO 2026-10-24 16:11:26!
+echo   SUCCESS: PORTFOLIO RESTORED TO 2026-10-25 16:22:44!
 echo ===================================================
 pause

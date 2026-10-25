@@ -66,7 +66,7 @@ export default function FeaturedWork() {
               <span className="block gradient-text pb-1 sm:pb-2 whitespace-nowrap">
                 Frames I couldn’t forget,
               </span>
-              <span className="block gradient-text font-serif-editorial italic pb-1 sm:pb-2 whitespace-nowrap">
+              <span className="block font-serif-editorial italic pb-1 sm:pb-2 whitespace-nowrap" style={{ color: "var(--accent)" }}>
                 moments made to stay.
               </span>
             </h2>

@@ -191,10 +191,6 @@ export const aboutData: AboutData = {
       image: "/images/o-sajna.png",
       caption: "O' Sajna - Music Video (2024) — Editor & Colorist",
     },
-    {
-      image: "/images/void/void-03.jpg",
-      caption: "Void (2026) — Cinematographer (DOP)",
-    },
   ],
   persona: {
     badge: "✦ Filmmaker DNA",
@@ -295,14 +291,6 @@ export const aboutData: AboutData = {
         logo: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=200&q=80",
       },
       {
-        id: "void-prod",
-        name: "Void",
-        role: "Short Film • Cinematographer (DOP)",
-        year: "2026",
-        category: "Narrative Short",
-        logo: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=200&q=80",
-      },
-      {
         id: "pole-47",
         name: "Pole 47",
         role: "25 Min Short Film • Cinematographer (DOP)",
@@ -324,28 +312,6 @@ export const aboutData: AboutData = {
         role: "Fashion Brand",
         company: "Commercial Client",
         image: "/images/label-fiora.png",
-        rating: 5,
-      },
-      {
-        id: "2",
-        quote:
-          "Working with Het was an absolute game-changer. His eye for lighting and cinematic blocking elevated our commercial far beyond our expectations. Everything in his frame is intentional.",
-        author: "Sagar Gupta",
-        role: "Founder & Creative Lead",
-        company: "Brand Media Lab",
-        image:
-          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80",
-        rating: 5,
-      },
-      {
-        id: "3",
-        quote:
-          "Het's visual instincts are extraordinary. From pre-production mood boards to the final grade, he brought a disciplined aesthetic and calm on set under tight schedules.",
-        author: "Abhay Sharma",
-        role: "Executive Producer",
-        company: "Cinema Collective",
-        image:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80",
         rating: 5,
       },
     ],
