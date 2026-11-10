@@ -201,7 +201,7 @@ export const aboutData: AboutData = {
         id: "intentional",
         label: "🎬 Everything in Frame is Intentional",
         icon: "target",
-        gradient: "linear-gradient(135deg, #FF2800, #FF6B00)",
+        gradient: "linear-gradient(135deg, #FF0000, #FF6B00)",
         initialPos: { top: "4%", left: "4%", rotate: "-6deg" },
       },
       {

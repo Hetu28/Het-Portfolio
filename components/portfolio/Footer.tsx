@@ -22,12 +22,13 @@ export default function Footer() {
         {/* Row 1: Brand & Nav Links */}
         <div className="mt-12 border-t border-white/[0.08] pt-8 flex flex-col md:flex-row gap-8 md:items-center md:justify-between">
           <div className="flex items-center gap-3">
-            <div
-              className="w-7 h-7 rounded-md grid place-items-center text-[13px] font-black"
-              style={{ background: "var(--accent)", color: "#fff" }}
-            >
-              H
-            </div>
+            <img
+              src="/images/het-logo.png"
+              alt="Het Patel"
+              width={34}
+              height={34}
+              className="w-[34px] h-[34px] object-contain drop-shadow-[0_0_12px_rgba(255,0,0,0.32)]"
+            />
             <div>
               <div className="text-[11px] tracking-[0.28em] font-semibold text-white uppercase">{footer.name}</div>
               <div className="text-[11px] text-white/40 mt-0.5">{footer.tagline}</div>

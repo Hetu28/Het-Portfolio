@@ -99,9 +99,9 @@ export default function FAQ() {
                         className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-white font-bold text-xs sm:text-sm flex items-center justify-center shrink-0 shadow-md"
                         style={{
                           background: isOpen
-                            ? "linear-gradient(135deg, #FF5722 0%, #FF2800 100%)"
+                            ? "linear-gradient(135deg, #FF2A2A 0%, #FF0000 100%)"
                             : "rgba(255, 255, 255, 0.08)",
-                          boxShadow: isOpen ? "0 0 16px rgba(255, 40, 0, 0.35)" : "none",
+                          boxShadow: isOpen ? "0 0 16px rgba(255, 0, 0, 0.35)" : "none",
                           color: isOpen ? "#ffffff" : "rgba(255, 255, 255, 0.7)",
                         }}
                       >

@@ -153,8 +153,8 @@ export default function ContactContent() {
                 <span
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-white"
                   style={{
-                    background: "rgba(255, 40, 0, 0.15)",
-                    border: "1px solid rgba(255, 40, 0, 0.3)",
+                    background: "rgba(255, 0, 0, 0.15)",
+                    border: "1px solid rgba(255, 0, 0, 0.3)",
                     color: "var(--accent)",
                   }}
                 >
@@ -197,8 +197,8 @@ export default function ContactContent() {
                 <span
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-white"
                   style={{
-                    background: "rgba(255, 40, 0, 0.15)",
-                    border: "1px solid rgba(255, 40, 0, 0.3)",
+                    background: "rgba(255, 0, 0, 0.15)",
+                    border: "1px solid rgba(255, 0, 0, 0.3)",
                     color: "var(--accent)",
                   }}
                 >
@@ -241,8 +241,8 @@ export default function ContactContent() {
                 <span
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-white"
                   style={{
-                    background: "rgba(255, 40, 0, 0.15)",
-                    border: "1px solid rgba(255, 40, 0, 0.3)",
+                    background: "rgba(255, 0, 0, 0.15)",
+                    border: "1px solid rgba(255, 0, 0, 0.3)",
                     color: "var(--accent)",
                   }}
                 >

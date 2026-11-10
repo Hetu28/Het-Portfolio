@@ -105,7 +105,7 @@ export default function BehanceProjectView({
   };
 
   return (
-    <div className="w-full text-white bg-[#070709] selection:bg-[#FF2800] selection:text-white">
+    <div className="w-full text-white bg-[#070709] selection:bg-[#FF0000] selection:text-white">
       {/* =========================================================================
           1. MODAL TOP HEADER BAR
           ========================================================================= */}
@@ -119,7 +119,7 @@ export default function BehanceProjectView({
             {project.title}
           </h2>
           <span className="text-white/25 hidden sm:inline">•</span>
-          <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] uppercase text-[#FF2800] font-semibold truncate shrink-0">
+          <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] uppercase text-[#FF0000] font-semibold truncate shrink-0">
             {project.category}
           </span>
         </div>
@@ -142,7 +142,7 @@ export default function BehanceProjectView({
       <div className="px-4 sm:px-8 md:px-12 pt-8 sm:pt-16 pb-8 sm:pb-12 flex flex-col items-center text-center">
         {/* Center Pill Badge */}
         <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-black/60 border border-white/10 text-[10px] sm:text-[11px] font-mono tracking-[0.18em] uppercase text-white/80 mb-5 sm:mb-6 max-w-full truncate">
-          <span className="w-2 h-2 rounded-full bg-[#FF2800] shrink-0" />
+          <span className="w-2 h-2 rounded-full bg-[#FF0000] shrink-0" />
           <span className="truncate">{project.category ? project.category.toUpperCase() : "CINEMATOGRAPHY (DOP)"}</span>
           <span className="text-white/30">•</span>
           <span>{project.year}</span>
@@ -181,10 +181,10 @@ export default function BehanceProjectView({
         {/* Scroll Indicator */}
         <div className="flex flex-col items-center gap-1.5 text-[11px] font-mono tracking-[0.24em] uppercase text-white/50 select-none">
           <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF2800] animate-ping" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF0000] animate-ping" />
             <span>EXPLORE STILLS</span>
           </span>
-          <ChevronDown size={15} className="animate-bounce text-[#FF2800]" />
+          <ChevronDown size={15} className="animate-bounce text-[#FF0000]" />
         </div>
       </div>
 
@@ -218,7 +218,7 @@ export default function BehanceProjectView({
                 {/* Top-Left Badge: Red dot + Still Number */}
                 <div className="absolute top-4 left-4 z-10">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[11px] font-mono tracking-widest uppercase text-white shadow-lg">
-                    <span className="w-2 h-2 rounded-full bg-[#FF2800]" />
+                    <span className="w-2 h-2 rounded-full bg-[#FF0000]" />
                     <span>
                       {String(idx + 1).padStart(2, "0")} / {String(stills.length).padStart(2, "0")}
                     </span>
@@ -228,7 +228,7 @@ export default function BehanceProjectView({
                 {/* Hover Inspect / Fullscreen Pill */}
                 <div className="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                   <div className="px-4 py-2 rounded-full bg-black/90 backdrop-blur-md border border-white/25 text-xs font-semibold text-white flex items-center gap-2 shadow-2xl">
-                    <Maximize2 size={14} className="text-[#FF2800]" />
+                    <Maximize2 size={14} className="text-[#FF0000]" />
                     <span>View in Fullscreen</span>
                   </div>
                 </div>

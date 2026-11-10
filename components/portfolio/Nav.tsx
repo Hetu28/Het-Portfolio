@@ -33,9 +33,9 @@ export default function Nav() {
 
   return (
     <>
-      {/* MOBILE HEADER (Right H Logo Button acting as Menu trigger, nothing on left) */}
+      {/* MOBILE HEADER (Right Mascot Crest Logo Button acting as Menu trigger, nothing on left) */}
       <header className="fixed top-[max(0.875rem,env(safe-area-inset-top))] inset-x-0 z-50 flex items-center justify-end px-4 sm:px-6 md:hidden pointer-events-none">
-        {/* Right: Iconic H Menu Button (Slightly larger with premium glass bezel) */}
+        {/* Right: Obsidian Crest Menu Button (Premium Liquid Glass Bezel) */}
         <button
           aria-label="Toggle Menu"
           onClick={() => setOpen(!open)}
@@ -45,20 +45,27 @@ export default function Nav() {
             WebkitBackdropFilter: "blur(28px) saturate(190%)",
           }}
         >
-          <div
-            className="w-10 h-10 rounded-[13px] flex items-center justify-center text-[17px] font-black tracking-tight relative overflow-hidden transition-all duration-300"
-            style={{
-              background: open
-                ? "linear-gradient(135deg, #e53e1b 0%, #cc2000 100%)"
-                : "linear-gradient(135deg, #ff4d26 0%, #ff2800 60%, #cc2000 100%)",
-              color: "#fff",
-              boxShadow:
-                "inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.7), inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.45), 0 0 20px var(--glow)",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent h-1/2 pointer-events-none" />
-            {open ? <X size={18} strokeWidth={2.6} /> : "H"}
-          </div>
+          {open ? (
+            <div
+              className="w-10 h-10 rounded-[13px] flex items-center justify-center relative overflow-hidden transition-all duration-300 border border-[#FF0000]/75 bg-[#0c0c10] text-[#FF0000]"
+              style={{
+                boxShadow:
+                  "inset 0 1px 1px rgba(255, 255, 255, 0.14), 0 0 18px rgba(255, 0, 0, 0.28)",
+              }}
+            >
+              <X size={18} strokeWidth={2.5} />
+            </div>
+          ) : (
+            <div className="w-10 h-10 flex items-center justify-center relative transition-all duration-300">
+              <img
+                src="/images/het-logo.png"
+                alt="Het Patel Menu"
+                width={40}
+                height={40}
+                className="w-10 h-10 object-contain drop-shadow-[0_0_14px_rgba(255,0,0,0.4)]"
+              />
+            </div>
+          )}
         </button>
       </header>
 
@@ -102,20 +109,15 @@ export default function Nav() {
           {/* Brand Avatar / Home Link */}
           <Link
             href="/"
-            className="group flex items-center gap-2.5 pl-3 pr-5 py-1 z-10"
+            className="group flex items-center gap-2.5 pl-2.5 pr-5 py-0.5 z-10"
           >
-            <div
-              className="w-7 h-7 rounded-lg flex items-center justify-center text-[13px] font-black tracking-tight relative overflow-hidden transition-transform duration-300 group-hover:scale-105"
-              style={{
-                background: "linear-gradient(135deg, #ff4d26 0%, #ff2800 60%, #cc2000 100%)",
-                color: "#fff",
-                boxShadow:
-                  "inset 0 1px 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 1.5px 0 rgba(0, 0, 0, 0.4), 0 0 20px var(--glow)",
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-white/35 to-transparent h-1/2 pointer-events-none" />
-              H
-            </div>
+            <img
+              src="/images/het-logo.png"
+              alt="Het Patel"
+              width={32}
+              height={32}
+              className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_12px_rgba(255,0,0,0.42)]"
+            />
             <span className="text-[11px] tracking-[0.28em] text-white/90 font-semibold group-hover:text-white transition-colors">
               HET&nbsp;PATEL
             </span>
@@ -149,9 +151,9 @@ export default function Nav() {
             href="/contact"
             className="group ml-2 flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full text-[11px] font-bold tracking-[0.16em] uppercase text-white whitespace-nowrap transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] relative overflow-hidden z-10 shrink-0"
             style={{
-              background: "linear-gradient(135deg, #ff451a 0%, #ff2800 65%, #d11e00 100%)",
+              background: "linear-gradient(135deg, #ff2a2a 0%, #ff0000 65%, #cc0000 100%)",
               boxShadow:
-                "inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.35), 0 6px 20px -2px rgba(255, 40, 0, 0.5), 0 0 16px rgba(255, 40, 0, 0.3)",
+                "inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.35), 0 6px 20px -2px rgba(255, 0, 0, 0.5), 0 0 16px rgba(255, 0, 0, 0.3)",
             }}
           >
             {/* Top Gloss Curve on CTA */}
@@ -187,15 +189,13 @@ export default function Nav() {
             }}
           >
             <div className="flex items-center gap-3 pb-3 mb-1 border-b border-white/10 px-2">
-              <div
-                className="w-7 h-7 rounded-lg flex items-center justify-center text-[13px] font-black text-white"
-                style={{
-                  background: "linear-gradient(135deg, #ff4d26, #ff2800)",
-                  boxShadow: "inset 0 1px 1px rgba(255,255,255,0.5), 0 0 16px var(--glow)",
-                }}
-              >
-                H
-              </div>
+              <img
+                src="/images/het-logo.png"
+                alt="Het Patel"
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain drop-shadow-[0_0_10px_rgba(255,0,0,0.35)]"
+              />
               <span className="text-[11px] tracking-[0.28em] text-white font-bold">
                 HET PATEL
               </span>
@@ -224,9 +224,9 @@ export default function Nav() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 flex items-center justify-center gap-2 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white shadow-[0_6px_20px_rgba(255,40,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.5)]"
+              className="mt-2 flex items-center justify-center gap-2 py-3 rounded-full text-[12px] font-bold tracking-[0.18em] uppercase text-white shadow-[0_6px_20px_rgba(255,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.5)]"
               style={{
-                background: "linear-gradient(135deg, #ff451a, #ff2800)",
+                background: "linear-gradient(135deg, #ff2a2a, #ff0000)",
               }}
             >
               {siteSettings.cta}

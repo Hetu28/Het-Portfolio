@@ -6,11 +6,11 @@ import Footer from "@/components/portfolio/Footer";
 import SmoothScroll from "@/components/portfolio/SmoothScroll";
 
 export const metadata: Metadata = {
-  title: "Contact — Het Patel | Filmmaker, Director & Cinematographer",
+  title: "Het Patel",
   description:
     "Get in touch with Het Patel for directing, cinematography, editing, commercial campaigns, and narrative film collaborations.",
   openGraph: {
-    title: "Contact — Het Patel | Let's Collaborate",
+    title: "Het Patel",
     description:
       "Get in touch with Het Patel for directing, cinematography, editing, commercial campaigns, and narrative film collaborations.",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="relative min-h-screen text-white bg-[#050505] selection:bg-[#FF2800] selection:text-white">
+    <main className="relative min-h-screen text-white bg-[#050505] selection:bg-[#FF0000] selection:text-white">
       {/* Cinematic Background Atmosphere Layers */}
       <Background />
 

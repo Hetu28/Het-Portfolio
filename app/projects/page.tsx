@@ -6,11 +6,11 @@ import Footer from "@/components/portfolio/Footer";
 import SmoothScroll from "@/components/portfolio/SmoothScroll";
 
 export const metadata: Metadata = {
-  title: "Projects — Het Patel | Filmmaker, Director & Cinematographer",
+  title: "Het Patel",
   description:
     "Explore the curated filmography, commercial campaigns, narrative shorts, and cinematography portfolio of Het Patel.",
   openGraph: {
-    title: "Projects — Het Patel | Curated Films & Commercials",
+    title: "Het Patel",
     description:
       "Explore the curated filmography, commercial campaigns, narrative shorts, and cinematography portfolio of Het Patel.",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="relative min-h-screen text-white bg-[#050505] selection:bg-[#FF2800] selection:text-white">
+    <main className="relative min-h-screen text-white bg-[#050505] selection:bg-[#FF0000] selection:text-white">
       {/* Background Atmosphere Layers (Blueprint grid, dust motes & spotlight) */}
       <Background />
 

@@ -99,9 +99,9 @@ export default function About() {
                   href="/about"
                   className="group inline-flex items-center gap-2.5 pl-5 pr-2 py-2 rounded-full text-[11px] font-bold tracking-[0.16em] uppercase text-white transition-all duration-300 hover:scale-105 active:scale-95 relative overflow-hidden shadow-lg shrink-0"
                   style={{
-                    background: "linear-gradient(135deg, #ff451a 0%, #ff2800 65%, #d11e00 100%)",
+                    background: "linear-gradient(135deg, #ff2a2a 0%, #ff0000 65%, #cc0000 100%)",
                     boxShadow:
-                      "inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.35), 0 8px 24px -3px rgba(255, 40, 0, 0.55), 0 0 16px rgba(255, 40, 0, 0.3)",
+                      "inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.35), 0 8px 24px -3px rgba(255, 0, 0, 0.55), 0 0 16px rgba(255, 0, 0, 0.3)",
                   }}
                 >
                   <span

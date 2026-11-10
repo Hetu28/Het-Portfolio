@@ -106,7 +106,7 @@ export default function FeaturedWork() {
                       <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
                         style={{
-                          boxShadow: "0 0 0 1px rgba(255,40,0,0.35) inset, 0 30px 80px -20px var(--glow)",
+                          boxShadow: "0 0 0 1px rgba(255,0,0,0.35) inset, 0 30px 80px -20px var(--glow)",
                         }}
                       />
                     </div>

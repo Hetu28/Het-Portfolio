@@ -16,10 +16,10 @@
   --text-dim: rgba(255, 255, 255, 0.35);
   
   /* Accent & Illumination */
-  --accent: #FF2800;
-  --accent-rgb: 255, 40, 0;
-  --glow: rgba(255, 40, 0, 0.35);
-  --glow-subtle: rgba(255, 40, 0, 0.08);
+  --accent: #FF0000;
+  --accent-rgb: 255, 0, 0;
+  --glow: rgba(255, 0, 0, 0.35);
+  --glow-subtle: rgba(255, 0, 0, 0.08);
   
   /* Borders */
   --border: rgba(255, 255, 255, 0.075);
@@ -108,9 +108,9 @@ body.modal-open {
   pointer-events: none;
   z-index: 1;
   background:
-    radial-gradient(900px circle at 15% 15%, rgba(255, 40, 0, 0.05), transparent 60%),
-    radial-gradient(1000px circle at 85% 80%, rgba(255, 40, 0, 0.035), transparent 65%),
-    radial-gradient(600px circle at 50% 45%, rgba(255, 40, 0, 0.02), transparent 55%);
+    radial-gradient(900px circle at 15% 15%, rgba(255, 0, 0, 0.05), transparent 60%),
+    radial-gradient(1000px circle at 85% 80%, rgba(255, 0, 0, 0.035), transparent 65%),
+    radial-gradient(600px circle at 50% 45%, rgba(255, 0, 0, 0.02), transparent 55%);
   mix-blend-mode: screen;
   transform: translateZ(0);
 }
@@ -216,7 +216,7 @@ body.modal-open {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, rgb(244, 244, 244) 0%, rgb(255, 40, 0) 50%, rgb(244, 244, 244) 100%);
+  background: linear-gradient(90deg, rgb(244, 244, 244) 0%, rgb(255, 0, 0) 50%, rgb(244, 244, 244) 100%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -253,7 +253,7 @@ body.modal-open {
     inset 0 0 0 0.5px rgba(255, 255, 255, 0.12),
     0 24px 60px -15px rgba(0, 0, 0, 0.8),
     0 8px 24px -6px rgba(0, 0, 0, 0.6),
-    0 0 35px -10px rgba(255, 40, 0, 0.15);
+    0 0 35px -10px rgba(255, 0, 0, 0.15);
 }
 
 .liquid-glass-pill {
@@ -386,11 +386,11 @@ body.modal-open {
 }
 
 .masonry-card:hover {
-  border-color: rgba(255, 40, 0, 0.45);
+  border-color: rgba(255, 0, 0, 0.45);
   box-shadow:
-    0 30px 60px -18px rgba(255, 40, 0, 0.28),
+    0 30px 60px -18px rgba(255, 0, 0, 0.28),
     0 10px 30px -8px rgba(0, 0, 0, 0.85),
-    inset 0 0 0 1px rgba(255, 40, 0, 0.35);
+    inset 0 0 0 1px rgba(255, 0, 0, 0.35);
 }
 
 /* Continuous Horizontal Marquee - Ultra Slow & Calm (120s) */
@@ -415,7 +415,7 @@ body.modal-open {
 
 .about-shimmer {
   display: inline-block;
-  background: linear-gradient(90deg, #F5F5F3 0%, #FF2800 50%, #F5F5F3 100%);
+  background: linear-gradient(90deg, #F5F5F3 0%, #FF0000 50%, #F5F5F3 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -438,8 +438,8 @@ body.modal-open {
 }
 
 .apple-glass-card:hover {
-  border-color: rgba(255, 40, 0, 0.35);
-  box-shadow: 0 20px 50px -10px rgba(255, 40, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 0, 0, 0.35);
+  box-shadow: 0 20px 50px -10px rgba(255, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transform: translateY(-3px);
 }
 
@@ -453,12 +453,12 @@ body.modal-open {
 }
 
 .client-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 40, 0, 0.35);
+  background: rgba(255, 0, 0, 0.35);
   border-radius: 9999px;
 }
 
 .client-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 40, 0, 0.65);
+  background: rgba(255, 0, 0, 0.65);
 }
 
 /* Fast marquee for CTA */
@@ -507,21 +507,21 @@ body.modal-open {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a0804;
-  border: 1px solid #FF2800;
+  background: #2a0000;
+  border: 1px solid #FF0000;
   border-radius: 9999px;
   transition: all 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF2800;
-  box-shadow: 0 0 12px rgba(255, 40, 0, 0.8);
+  background: #FF0000;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #FF2800 #070709;
+  scrollbar-color: #FF0000 #070709;
 }
 
 /* Modal and container scrollbars */
@@ -538,24 +538,24 @@ div::-webkit-scrollbar-track {
 
 .custom-modal-scroll::-webkit-scrollbar-thumb,
 div::-webkit-scrollbar-thumb {
-  background: rgba(255, 40, 0, 0.75);
+  background: rgba(255, 0, 0, 0.75);
   border-radius: 9999px;
 }
 
 .custom-modal-scroll::-webkit-scrollbar-thumb:hover,
 div::-webkit-scrollbar-thumb:hover {
-  background: #FF2800;
-  box-shadow: 0 0 10px rgba(255, 40, 0, 0.9);
+  background: #FF0000;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.9);
 }
 
 /* Selection Color */
 ::selection {
-  background: #FF2800 !important;
+  background: #FF0000 !important;
   color: #ffffff !important;
 }
 
 ::-moz-selection {
-  background: #FF2800 !important;
+  background: #FF0000 !important;
   color: #ffffff !important;
 }
 

@@ -10,30 +10,30 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Het Patel — Filmmaker, Director & Cinematographer",
+  title: "Het Patel",
   description:
     "Independent filmmaker based in India. Direction, cinematography and editing for narrative shorts, commercials, documentaries and music videos.",
   openGraph: {
-    title: "Het Patel — Filmmaker Portfolio",
+    title: "Het Patel",
     description: "Creating stories that deserve to be remembered.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Het Patel — Filmmaker Portfolio",
+    title: "Het Patel",
     description: "Creating stories that deserve to be remembered.",
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.ico" },
+      { url: "/favicon.svg?v=3", type: "image/svg+xml" },
+      { url: "/favicon-32.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/icon-512.png?v=3", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico?v=3" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.png?v=3", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: "/favicon.ico?v=3",
   },
 };
 
@@ -46,11 +46,11 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth">
       <head>
         <meta charSet="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=3" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+        <link rel="shortcut icon" href="/favicon.ico?v=3" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

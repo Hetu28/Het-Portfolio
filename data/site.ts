@@ -110,7 +110,7 @@ export const siteSettings: SiteSettings = {
     location: "Mumbai, India",
   },
   socials: {
-    instagram: "https://instagram.com/",
+    instagram: "https://www.instagram.com/hetu_creatives?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw==",
     youtube: "https://youtube.com/@hetucreatives?si=IOtVrETWzDJg_-4Q",
     linkedin: "https://linkedin.com/",
     behance: "https://behance.net/",

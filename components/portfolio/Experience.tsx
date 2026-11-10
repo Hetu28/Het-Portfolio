@@ -34,9 +34,9 @@ export default function Experience() {
     }
     if (role.includes("Cinematographer") || role.includes("Camera")) {
       return {
-        color: "#ff2800",
-        borderColor: "rgba(255, 40, 0, 0.45)",
-        backgroundColor: "rgba(255, 40, 0, 0.08)",
+        color: "#ff0000",
+        borderColor: "rgba(255, 0, 0, 0.45)",
+        backgroundColor: "rgba(255, 0, 0, 0.08)",
       };
     }
     if (role.includes("AD") || role.includes("Assistant Director")) {
