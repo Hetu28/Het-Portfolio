@@ -205,8 +205,14 @@ export default function BehanceProjectView({
               onClick={() => openLightbox(idx)}
               className="group relative cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-black shadow-2xl transition-all duration-500 hover:border-white/30"
             >
-              {/* Big, consistent 16:9 widescreen ratio for all images */}
-              <div className="relative aspect-[16/9] w-full overflow-hidden bg-black">
+              {/* Responsive aspect ratio: 2:3 centered card for portraits, 16:9 full-width for widescreen */}
+              <div
+                className={`relative w-full overflow-hidden bg-black ${
+                  still.aspect === "portrait"
+                    ? "aspect-[2/3] max-w-2xl mx-auto rounded-xl sm:rounded-2xl"
+                    : "aspect-[16/9]"
+                }`}
+              >
                 <img
                   src={still.url}
                   alt={still.title}
